@@ -1,0 +1,45 @@
+aside {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+  }
+  
+  h2 {
+    font-size: 56px;
+    line-height: 10px;
+    font-family: poppinsmedium;
+  }
+  
+  span {
+    color: rgb(227, 46, 18);
+  }
+  
+  p {
+    line-height: 20px;
+    max-width: 500px;
+    font-family: poppinslight;
+  }
+  
+  form [type="submit"] {
+    height: 50px;
+    width: 50%;
+    background-color: rgb(226, 30, 30);
+    color: white;
+    font-weight: bold;
+  }
+  
+  form [type="submit"]:hover {
+    cursor: pointer;
+  }
+  
+  input {
+    margin-top: 20px;
+    height: 20px;
+    padding: 15px;
+    border-radius: 20px;
+    border: none;
+  }
+  
+  form [type="text"] {
+    color: grey;
+  }
