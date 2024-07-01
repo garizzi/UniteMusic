@@ -5,8 +5,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import App from './App.jsx';
 import Login from './Login.jsx';
-// antes import Login from './Login.jsx';
-// import './index.css'
+import './styles/index.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
