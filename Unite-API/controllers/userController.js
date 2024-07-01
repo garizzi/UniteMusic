@@ -2,7 +2,7 @@ const User = require('../models/User');
 
 // Criar um novo usuário
 exports.createUser = async (req, res) => {
-  const { name, email, password, dateOfBirth } = req.body;
+  const { name, email, password, dateOfBirth, musicalStyle, instrument, experience, address } = req.body;
   
   if (!name || !email || !password || !dateOfBirth) {
     return res.status(400).json({ error: 'Name, email, password, and date of birth are required' });
@@ -13,7 +13,11 @@ exports.createUser = async (req, res) => {
       name,
       email,
       password,
-      dateOfBirth
+      dateOfBirth,
+      musicalStyle,
+      instrument,
+      experience,
+      address
     });
     res.status(201).json(newUser);
   } catch (err) {
@@ -32,11 +36,25 @@ exports.getUsers = async (req, res) => {
   }
 };
 
+// Buscar um usuário por ID numérico
+exports.getUserById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const user = await User.findByPk(id);
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 // Atualizar um usuário por ID numérico
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const { name, email, password } = req.body;
+    const { name, email, password, dateOfBirth, musicalStyle, instrument, experience, address } = req.body;
     console.log('Recebendo dados para atualizar usuário:', { id, name, email, password });
 
     const user = await User.findByPk(id); // Usando numericId como chave primária
@@ -47,6 +65,11 @@ exports.updateUser = async (req, res) => {
     user.name = name || user.name;
     user.email = email || user.email;
     user.password = password || user.password;
+    user.dateOfBirth = dateOfBirth || user.dateOfBirth;
+    user.musicalStyle = musicalStyle || user.musicalStyle;
+    user.instrument = instrument || user.instrument;
+    user.experience = experience || user.experience;
+    user.address = address || user.address;
 
     await user.save();
     console.log('Usuário atualizado com sucesso:', user);

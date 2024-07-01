@@ -33,6 +33,22 @@ const User = sequelize.define('User', {
   dateOfBirth: {
     type: DataTypes.DATEONLY,
     allowNull: false,
+  },
+  musicalStyle: {
+    type: DataTypes.STRING,
+    allowNull: true, // Opcional
+  },
+  instrument: {
+    type: DataTypes.STRING,
+    allowNull: true, // Opcional
+  },
+  experience: {
+    type: DataTypes.STRING,
+    allowNull: true, // Opcional
+  },
+  address: {
+    type: DataTypes.STRING,
+    allowNull: true, // Opcional
   }
 }, {
   timestamps: true,
